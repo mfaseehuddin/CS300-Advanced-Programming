@@ -1,4 +1,5 @@
 # Lecture 2 Notes:
+###### Please refer to suplementary .hs file for code examples you can run on your machine.
 ## Basic Introduction to Haskell
 ### What is Haskell?
 Haskell is a language that offers the use of the Functional Programming Paradigm
