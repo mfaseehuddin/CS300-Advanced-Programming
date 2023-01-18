@@ -35,6 +35,7 @@ fact::Int->Int --function signature
 fact x = if x <= 0 then 1 else x * fact (x-1) --function body
 
 
+
 --Basic Control Flow functions
 --ifElse function takes three arguments, a boolean, an integer and an integer
 --Then it returns an integer
@@ -47,23 +48,18 @@ ifElse b x y = if b then x else y --function body
 ifElseFunc::Bool->(Float->Float)->Float->(Float->Float)->Float->Float --function signature
 ifElseFunc b f x g y = if b then f x else g y --function body
 
-
---placeholder type--> a
-
-
-
 -- Complex functions
 -- A For loop
 -- This function takes three arguments, an integer, an integer and a function
 -- Then it returns a list of integers, ranging from the first integer to the second integer
-for::Int->Int->(Int->Int)->[Int] --function signature
+-- for::Int->Int->(Int->Int)->[Int] --function signature --Commenting this makes the type inference work
 for i j f = [f x | x <- [i..j]] --function body
 
 
 -- A While loop
 -- This function takes three arguments, an integer, a function and a function
 -- Then it returns a list of integers, ranging from the first integer to the second integer
-while::Int->(Int->Bool)->(Int->Int)->[Int]
+-- while::Int->(Int->Bool)->(Int->Int)->[Int] --Commenting this makes the type inference work
 while i p f = [f x | x <- [i..], p x]
 
 
@@ -80,24 +76,30 @@ while i p f = [f x | x <- [i..], p x]
 -- print is a function that takes an argument and prints it to the console
 main::IO()
 main = do
-    -- print (sqRoot 3) --function call: prints the square root of 3
-    -- print (for 1 10 square) --function call: prints the square of numbers from 1 to 10
+    print("Print Sqrt of 3: ")
+    print (sqRoot 3) --function call: prints the square root of 3
+
+    print("Print Squares of 1 to 10: ")
+    print (for 1 10 square) --function call: prints the square of numbers from 1 to 10
     -- print (while 1 (<10) square) --function call: prints the square of numbers from 1 to 10
 
     -- lets try using our ifElseFunc function
     -- if we pass in True, it should return return square of 12
     -- if we pass in False, it should return return sqRoot of 12
     
-    -- -- take input from the user
-    -- putStrLn "Enter a T or F:"
-    -- input <- getLine
-    -- --convert T | t to True and F to False
-    -- let selection = input == "T" || input == "t"
-    -- print (ifElseFunc selection sqRoot 12 square 12) --function call: prints the square root of 12
+    -- take input from the user
+    print("Print the square root of 12 if T or F is entered: ")
+    putStrLn "Enter a T or F:"
+    input <- getLine
+    --convert T | t to True and F to False
+    let selection = input == "T" || input == "t"
+    print (ifElseFunc selection sqRoot 12 square 12) --function call: prints the square root of 12
 
 
-    -- -- putStrLn "Enter a Number:"
-    -- print ("10 is even: ", isEven 10)
-    -- -- print (isEven 10)
+    print("Print the factorial of 5: ")
+    -- putStrLn "Enter a Number:"
+    
+    print ("10 is even: ", isEven 10)
+    -- print (isEven 10)
 
     print(fact 5)
