@@ -1,5 +1,4 @@
 --This file is in conjunction with the lecture notes (notes.md) in the same folder
-
 --This is a function definition
 --square function takes an integer and returns an integer
 square::Float->Float --line explains the function signature
@@ -30,6 +29,10 @@ sub x y = x - y --function body
 
 mul::Int->Int->Int --function signature
 mul x y = x * y --function body
+
+--factorial
+fact::Int->Int --function signature
+fact x = if x <= 0 then 1 else x * fact (x-1) --function body
 
 
 --Basic Control Flow functions
@@ -63,6 +66,7 @@ for i j f = [f x | x <- [i..j]] --function body
 while::Int->(Int->Bool)->(Int->Int)->[Int]
 while i p f = [f x | x <- [i..], p x]
 
+
 -- printList::[Int]->IO()
 -- printList [] = return ()
 
@@ -84,17 +88,16 @@ main = do
     -- if we pass in True, it should return return square of 12
     -- if we pass in False, it should return return sqRoot of 12
     
-    -- take input from the user
-    putStrLn "Enter a T or F:"
-    input <- getLine
-
-    --convert T | t to True and F to False
-    let selection = input == "T" || input == "t"
-
-
-    print (ifElseFunc selection sqRoot 12 square 12) --function call: prints the square root of 12
+    -- -- take input from the user
+    -- putStrLn "Enter a T or F:"
+    -- input <- getLine
+    -- --convert T | t to True and F to False
+    -- let selection = input == "T" || input == "t"
+    -- print (ifElseFunc selection sqRoot 12 square 12) --function call: prints the square root of 12
 
 
-    -- putStrLn "Enter a Number:"
-    print ("10 is even: ", isEven 10)
-    -- print (isEven 10)
+    -- -- putStrLn "Enter a Number:"
+    -- print ("10 is even: ", isEven 10)
+    -- -- print (isEven 10)
+
+    print(fact 5)
