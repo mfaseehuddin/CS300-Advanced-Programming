@@ -1,3 +1,4 @@
+import Data.Complex (conjugate)
 --Abstract Data Types in Haskell
 -- To Define a new type, we use the keyword "data"
 
@@ -14,6 +15,13 @@ instance Show Complex where
 addComplex::Complex->Complex->Complex
 addComplex (Complex x y) (Complex x' y') = Complex (x+x') (y+y')
 
+makeConjugate::Complex->Complex
+makeConjugate (Complex x y) = Complex x (-y)
+
+multiplyComplex::Complex->Complex->Complex
+multiplyComplex (Complex x y) (Complex x' y') = Complex (x*x' - y*y') (x*y' + y*x')
+
+
 
 -- This function takes two arguments, a Complex number and a Complex number
 
@@ -24,3 +32,7 @@ main = do
     let c2 = Complex 3 4
     let c3 = addComplex c1 c2
     print c3
+
+    --multiply a complex number by its conjugate
+    print (multiplyComplex c1 (makeConjugate c1))
+
